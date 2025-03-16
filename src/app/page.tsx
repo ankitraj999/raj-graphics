@@ -192,7 +192,7 @@ export default function Home() {
                 asChild
                 variant="outline"
                 size="lg"
-                className="text-base border-white text-white hover:bg-white/10"
+                className="text-base border-white text-gray-900 hover:bg-white/10"
               >
                 <Link href="/contact">Get in Touch</Link>
               </Button>
