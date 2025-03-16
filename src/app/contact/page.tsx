@@ -1,6 +1,6 @@
 "use client"
 
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import Link from "next/link"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
@@ -10,6 +10,7 @@ import { zodResolver } from "@hookform/resolvers/zod"
 import { useForm } from "react-hook-form"
 import * as z from "zod"
 import { Mail, MapPin, Phone, Send } from "lucide-react"
+import dynamic from "next/dynamic"
 
 const formSchema = z.object({
   name: z.string().min(2, { message: "Name must be at least 2 characters." }),
@@ -17,6 +18,9 @@ const formSchema = z.object({
   subject: z.string().min(5, { message: "Subject must be at least 5 characters." }),
   message: z.string().min(10, { message: "Message must be at least 10 characters." }),
 })
+
+// Dynamically import the map component with no SSR to avoid hydration issues
+const MapSection = dynamic(() => import("./MapSection"), { ssr: false });
 
 export default function ContactPage() {
   const [isSubmitting, setIsSubmitting] = useState(false)
@@ -195,7 +199,7 @@ export default function ContactPage() {
                   <div>
                     <h3 className="font-semibold mb-1">Location</h3>
                     <p className="text-gray-600">123 Design Street</p>
-                    <p className="text-gray-600">Creative City, 12345</p>
+                    <p className="text-gray-600">Delhi, India</p>
                   </div>
                 </div>
               </div>
@@ -242,17 +246,7 @@ export default function ContactPage() {
       </section>
 
       {/* Map Section */}
-      <section className="py-16 bg-gray-50">
-        <div className="container mx-auto px-4">
-          <div className="aspect-[16/9] w-full bg-gray-200 rounded-lg overflow-hidden">
-            {/* Placeholder for map */}
-            <div className="w-full h-full flex items-center justify-center">
-              <p className="text-gray-500">Interactive Map Would Be Displayed Here</p>
-            </div>
-          </div>
-        </div>
-      </section>
+      <MapSection />
     </div>
   )
 }
-

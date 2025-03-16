@@ -1,0 +1,2 @@
+#First, install Leaflet and react-leaflet:
+npm install react-leaflet leaflet

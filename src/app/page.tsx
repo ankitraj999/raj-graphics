@@ -57,7 +57,7 @@ export default function Home() {
     const handleScroll = () => {
       if (!heroRef.current) return
       const scrollPosition = window.scrollY
-      heroRef.current.style.transform = `translateY(${scrollPosition * 0.4}px)`
+      heroRef.current.style.transform = `translate(-50%, calc(-50% + ${scrollPosition * 0.4}px))`
     }
 
     window.addEventListener("scroll", handleScroll)
