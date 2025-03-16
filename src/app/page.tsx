@@ -9,6 +9,7 @@ import { Button } from "@/components/ui/button"
 import ProjectCard from "@/components/project-card"
 import ServiceCard from "@/components/service-card"
 import TestimonialCard from "@/components/testimonial-card"
+import { Variants } from "framer-motion";
 
 export default function Home() {
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 })
@@ -31,7 +32,7 @@ export default function Home() {
     }
   }, [])
 
-  const variants = {
+  const variants:Variants = {
     default: {
       x: mousePosition.x - 16,
       y: mousePosition.y - 16,
